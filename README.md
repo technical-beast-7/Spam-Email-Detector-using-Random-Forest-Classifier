@@ -1,9 +1,4 @@
-# Email Spam Detection
-
-!Python
-!Flask
-!Scikit-learn
-!License
+# Spam Email Detector using Random Forest Classifier
 
 This project is a full-stack web application that uses a **Random Forest** machine learning model to classify emails as "Spam" or "Ham" (not spam). It features a clean frontend interface that communicates with a Flask backend API to deliver real-time predictions.
 
