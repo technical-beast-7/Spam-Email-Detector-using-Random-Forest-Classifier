@@ -42,7 +42,7 @@ Follow these steps to run the project on your local machine.
 
 1.  **Clone the Repository**
     ```bash
-    git clone https://github.com/technical-beast-7/Email_Spam_Detection.git
+    git clone https://github.com/technical-beast-7/Spam-Email-Detector-using-Random-Forest-Classifier.git
     cd Spam-Email-Detector-using-Random-Forest-Classifier
     ```
 
