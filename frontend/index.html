@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Email Spam Detector - Random Forest</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Email Spam Detector</h1>
+    <form id="emailForm" class="form">
+      <input type="email" id="email_id" placeholder="Enter your email" required>
+      <input type="text" id="subject" placeholder="Email subject" required>
+      <textarea id="message" rows="5" placeholder="Enter message..." required></textarea>
+      <button type="submit">Check the Email</button>
+    </form>
+    <h2 id="result"></h2>
+  </div>
+
+  <script>
+    document.getElementById('emailForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const email_id = document.getElementById('email_id').value;
+      const subject = document.getElementById('subject').value;
+      const message = document.getElementById('message').value;
+
+      try {
+        // Use a relative path for the API endpoint. This works for both
+        // local development and production deployment.
+        const response = await fetch("/predict", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email_id, subject, message })
+        });
+
+        const data = await response.json();
+        document.getElementById('result').innerText = `Prediction: ${data.result}`;
+      } catch (error) {
+        document.getElementById('result').innerText = 'Error fetching prediction.';
+        console.error(error);
+      }
+    });
+  </script>
+</body>
+</html>

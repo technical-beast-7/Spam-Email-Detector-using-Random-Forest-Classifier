@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: email-spam-api
+    env: python
+    # The build command now installs dependencies AND trains the model.
+    # This ensures the spam_classifier.pkl file exists before starting the server.
+    buildCommand: pip install -r requirements.txt && python train_model.py
+    # Use a production-grade WSGI server like Gunicorn instead of Flask's dev server.
+    # The --bind flag is automatically handled by Render.
+    startCommand: gunicorn app:app
+    plan: free
